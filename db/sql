@@ -1,0 +1,7 @@
+SELECT
+	a.province,a.provinceid,b.city,c.areaid,c.area
+FROM
+	provinces a
+LEFT JOIN cities b ON a.provinceid = b.provinceid 
+LEFT JOIN areas c ON b.cityid = c.cityid
+WHERE a.provinceid = '510000' and c.cityid ='511300'
