@@ -16,7 +16,7 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
  *
  */
 @SpringBootApplication
-@MapperScan("com.yajun.longyj.mapper.*")
+@MapperScan("com.education.mapper.*")
 public class TestSpringBootApplication extends SpringBootServletInitializer{
 	//SpringBootServletInitializer
     
