@@ -5,7 +5,10 @@
 <configuration>
 
 	<typeAliases>  
-	    <typeAlias type="com.education.entity.User" alias="Resource"/>
+	    <typeAlias type="com.education.entity.User" alias="User"/>
+	    <typeAlias type="com.education.entity.Provinces" alias="Provinces"/>
+	    <typeAlias type="com.education.entity.Cities" alias="Cities"/>
+	    <typeAlias type="com.education.entity.Areas" alias="Areas"/>
 	</typeAliases> 
 	
 </configuration>

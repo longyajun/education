@@ -4,9 +4,47 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.education.mapper.login.UserMapper">
 
-    <select id="loadByUserName" parameterType="string" resultType="com.education.entity.User">
-        SELECT * FROM u_user WHERE username = #{username}
+	<sql id="sql_column">username,school_name,subject,grade_class,password,email,mobile,status,last_login_ip,last_login_date</sql>
+	
+	<sql id="sql_value">#{userName},#{schoolName},#{subject},#{gradeClass},#{password},#{email},#{mobile},#{status},#{lastLoginIp},#{lastLoginDate}</sql>
+	 
+    <select id="loadByUserName" parameterType="string" resultType="User">
+        SELECT 
+        <include refid="sql_column"/> 
+        FROM u_user  
+        <where>
+        	1=1
+	        <if test="email != null and email != ''">
+				and email = #{email}
+			</if>
+	       	<if test="mobile != null and mobile != ''">
+				and mobile=#{mobile}
+			</if>
+        </where>
     </select>
+    
+    <insert id="insert" parameterType="User">
+        INSERT INTO u_user
+        (username,school_name,subject,grade_class,password,email,mobile,status,last_login_ip,last_login_date)
+        VALUES
+        (<include refid="sql_value"/>);
+    </insert>
+    
+    <!-- 区域 -->
+    <select id="listProvinces" resultType="Provinces">
+    	 select id,provinceid,province from provinces
+    </select>
+    <select id="listCities" parameterType="String" resultType="String">
+    	 select cityid,city,provinceid from cities
+    	 <where>1=1<if test="provinceid != null and provinceid != ''">provinceid=#{provinceid,jdbcType=VARCHAR}</if></where>
+    </select>
+    <select id="listAreas" resultType="Areas">
+    	 select areaid,area,cityid from areas
+    	 <where>1=1<if test="cityid != null and cityid != ''">cityid=#{cityid,jdbcType=VARCHAR}</if></where>
+    </select>
+    
+    
+    
     
 </mapper>
 

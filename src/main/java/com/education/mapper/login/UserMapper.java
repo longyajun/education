@@ -2,15 +2,41 @@ package com.education.mapper.login;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
+import com.education.entity.Areas;
+import com.education.entity.Cities;
+import com.education.entity.Provinces;
 import com.education.entity.User;
 
 public interface UserMapper {
 
-	Integer update(User user);
+	/**
+	 * 根据用户名加载用户对象（用于登录使用）
+	 * 
+	 * @param email
+	 * @param mobile
+	 * @return
+	 */
+	User loadByUserName(@Param(value = "email") String email,@Param(value = "mobile") String mobile);
+
+	/**
+	 * 添加单个用户
+	 * 
+	 * @param user
+	 * @return
+	 */
+	int insert(User user);
 	
-	User load(Integer id);
+	/**
+	 * 查询区域
+	 * @param provinces
+	 * @return
+	 */
+	List<Provinces> listProvinces();
 	
-	User loadByUserName(String username);
+	List<Cities> listCities(String cities);
 	
-	List<User> listUser();
+	List<Areas> listAreas(String provinceid);
+
 }

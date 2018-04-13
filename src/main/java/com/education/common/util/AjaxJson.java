@@ -7,12 +7,6 @@ package com.education.common.util;
  */
 public class AjaxJson {
 	
-	/**成功失败编码**/
-	public static final Integer SUCCESS=0;
-	public static final Integer FAIL=-1;
-	
-	/**标识页面跳转**/
-	
 	//返回的信息
 	public String msg="";
 	//返回的状态 成功用0,失败用-1
