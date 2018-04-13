@@ -37,7 +37,9 @@ public class UserController {
 	/**
 	 * 区域
 	 * @return
-	 * http://localhost:8080/education/login/user/listregion?provinceid=511300&&cityid=510000
+	 * http://localhost:8080/education/login/user/listregion?provinceid=110000
+	 * &&cityid=110100
+	 * 
 	 */
 	@RequestMapping(value = "/listregion", method = RequestMethod.GET)
 	public void listRegion(HttpServletRequest request,HttpServletResponse response,String provinceid,String cityid){
