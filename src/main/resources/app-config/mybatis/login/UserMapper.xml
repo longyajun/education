@@ -34,13 +34,13 @@
     <select id="listProvinces" resultType="Provinces">
     	 select id,provinceid,province from provinces
     </select>
-    <select id="listCities" parameterType="String" resultType="String">
-    	 select cityid,city,provinceid from cities
-    	 <where>1=1<if test="provinceid != null and provinceid != ''">provinceid=#{provinceid,jdbcType=VARCHAR}</if></where>
+    <select id="listCities" resultType="Cities">
+    	 select cityid,city,provinceid from cities where provinceid=#{provinceid}
+    	 <!-- <where>1=1<if test="provinceid != null and provinceid != ''">provinceid=#{provinceid}</if></where> -->
     </select>
     <select id="listAreas" resultType="Areas">
-    	 select areaid,area,cityid from areas
-    	 <where>1=1<if test="cityid != null and cityid != ''">cityid=#{cityid,jdbcType=VARCHAR}</if></where>
+    	 select areaid,area,cityid from areas where cityid=#{cityid}
+    	 <!-- <where>1=1<if test="cityid != null and cityid != ''">cityid=#{cityid}</if></where> -->
     </select>
     
     
